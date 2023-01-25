@@ -1,0 +1,28 @@
+{
+	"manifest_version": 3,
+	"name": "unscramble",
+	"description": "Unscramble scrambled articles.",
+	"version": "0.1",
+	"action": {
+		"default_popup": "src/ui.html",
+		"default_icon": "assets/icon.png"
+	},
+	"content_scripts": [
+		{
+			"css": ["src/scripts/unscramble.css"],
+			"js": ["src/scripts/unscramble.js"],
+			"matches": [
+				"https://*/*"
+			]
+		}
+	],
+	"web_accessible_resources": [
+		{
+			"resources": ["assets/*.json"],
+			"matches": [
+				"https://*/*"
+			]
+		}
+	]
+}
+

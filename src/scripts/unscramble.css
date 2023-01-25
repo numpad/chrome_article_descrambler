@@ -1,0 +1,22 @@
+
+.descrambler-gibberish {
+	border-bottom: 1px dotted red;
+}
+
+.descrambler-undecided {
+	border-bottom: 1px dashed blue;
+}
+.descrambler-undecided:before {
+	content: '[';
+}
+.descrambler-undecided:after {
+	content: ']';
+}
+.descrambler-undecided:hover .descrambler-undecided-word:not(:hover) {
+	opacity: 0.2;
+}
+.descrambler-undecided-word {
+	transition: opacity 0.3s;
+	cursor: pointer;
+}
+

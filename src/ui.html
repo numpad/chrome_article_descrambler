@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<style>
+			input[type="radio"] {
+				margin: 0;
+			}
+
+			.radiogroup-row {
+				display: flex;
+				gap: 0 3px;
+				margin: 2px 0 2px 0;
+			}
+			
+			h1 {
+				font-size: 1.75em;
+				text-align: center;
+			}
+
+			button {
+				width: 100%;
+				height: 2em;
+				margin-top: 8px;
+				cursor: pointer;
+			}
+
+		</style>
+		<script src="ui.js"></script>
+	</head>
+	<body style="min-width: 200px">
+		<h1>Article Unlocker</h1>
+
+		<div class="radiogroup-row">
+			<input type="radio" id="content_finder_raw" name="content_finder" value="raw" checked>
+			<label for="content_finder_raw" title="Tries to descramble the whole website content, useful when viewing raw text files.">
+				Mode: Raw
+			</label>
+		</div>
+		<div class="radiogroup-row">
+			<input type="radio" id="content_finder_classlist" name="content_finder" value="ClassList">
+			<label for="content_finder_classlist">Mode: ClassList</label>
+		</div>
+
+		<button id="btn-unlock">
+			<img src="/assets/unlock.svg" />
+			<span class="button-text">Unlock</span>
+			<img src="/assets/unlock.svg" style="opacity: 0;" />
+		</button>
+	</body>
+</html>
+
