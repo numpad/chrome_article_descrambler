@@ -53,17 +53,19 @@ function descr_init(dict) {
 			'.':  4, ',':  4, '!': 4, '?': 4, '*': '4',
 			':':  5, ';':  5,
 		},
+		classlist: '',
 	};
 }
 
-function onDescramble() {
+function onDescramble(params) {
 	const wordlist = chrome.runtime.getURL("assets/words_de_sorted.json");
 	fetch(wordlist).then(response => response.json().then(dictionary => {
 
 		const descrambler = descr_init(dictionary);
+		descrambler.classlist = params.classlist;
 
 		// descramble
-		[...document.querySelectorAll(".text:not(.descramble-complete)")]
+		[...document.querySelectorAll(`${descrambler.classlist}:not(.descramble-complete)`)]
 			.forEach(el => {
 				el.classList.add('descramble-complete');
 				el.innerHTML = descr_fixarticle(descrambler, el.innerText);
@@ -77,9 +79,15 @@ function onDescramble() {
 				});
 			});
 
-		// remove blur
-		[...document.querySelectorAll(".text,.text-blurred")]
-			.forEach(e => e.classList.remove("text-blurred"));
+		// remove blur, just guess element classes
+		[...document.querySelectorAll(".text-blurred,.blur,.blur-sm,.blur-md,.pointer-events-none")]
+			.forEach(el => {
+				el.classList.remove("text-blurred");
+				el.classList.remove("blur");
+				el.classList.remove("blur-sm");
+				el.classList.remove("blur-md");
+				el.classList.remove("pointer-events-none");
+			});
 
 		chrome.runtime.sendMessage({ status: 'descramble-complete' });
 	}));
@@ -87,7 +95,7 @@ function onDescramble() {
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 	if (request.message === 'descramble') {
-		onDescramble();
+		onDescramble(request.params);
 	}
 });
 

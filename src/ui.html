@@ -1,30 +1,7 @@
 <html>
 	<head>
-		<style>
-			input[type="radio"] {
-				margin: 0;
-			}
-
-			.radiogroup-row {
-				display: flex;
-				gap: 0 3px;
-				margin: 2px 0 2px 0;
-			}
-			
-			h1 {
-				font-size: 1.75em;
-				text-align: center;
-			}
-
-			button {
-				width: 100%;
-				height: 2em;
-				margin-top: 8px;
-				cursor: pointer;
-			}
-
-		</style>
-		<script src="ui.js"></script>
+		<link rel="stylesheet" href="/src/ui.css">
+		<script src="/src/ui.js"></script>
 	</head>
 	<body style="min-width: 200px">
 		<h1>Article Unlocker</h1>
@@ -38,6 +15,7 @@
 		<div class="radiogroup-row">
 			<input type="radio" id="content_finder_classlist" name="content_finder" value="ClassList">
 			<label for="content_finder_classlist">Mode: ClassList</label>
+			<input type="text" id="input_content_finder_classlist" value="" placeholder=".text.text-paywall">
 		</div>
 
 		<button id="btn-unlock">
